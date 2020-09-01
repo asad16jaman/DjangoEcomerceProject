@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block body %}
+<h3>your comment is <i>{{ff}}</i>, Are you sure want to delete this comment ?</h3>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-danger btn-sm" value="delete">
+    <button class="btn btn-info btn-sm"><a href="{% url 'Blog:detail_blog' ff.blog.slug %}">cancle</a></button>
+</form>
+{% endblock %}

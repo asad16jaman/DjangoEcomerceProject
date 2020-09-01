@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} home {% endblock %}
+
+{% block body %}
+    <div class="container">
+
+             {% for blog in blogs %}
+            <div class="row my-3">
+
+                <div class="col-md-3 mb-4">
+
+                    <img src="/media/{{blog.blog_images}}" alt="" width="100%">
+                </div>
+                <div class="col-md-9 mb-4">
+                     <h1>{{ blog.blog_title}}</h1>
+                    <small>{{ blog.pub_date }}</small>
+                    <p class="mb-1">{{ blog.blog_contant|truncatewords:10}}</p>
+                    
+                    <span>read more <a href="{% url 'Blog:detail_blog' blog.slug %}">hare</a></span>
+                    <p>produce by @{{blog.author}}</p>
+                </div>
+             </div>
+            <hr>
+            {% endfor %}
+
+
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block body %}
+<div class="container">
+    {% for x in user.post_author.all %}
+        <h1>{{ x.blog_title }}</h1>
+        <small>{{ x.pub_date }}</small>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/media/{{x.blog_images}}" alt="" width="100%">
+            </div>
+            <div class="col-md-6">
+                <p>{{x.blog_contant|truncatewords:15}}</p>
+                <button class="btn btn-info btn-lg"><a href="{% url 'Blog:detail_blog' x.slug %}">read</a></button>
+                <button class="btn btn-danger btn-lg"><a href="{% url 'Blog:edit_blog' x.pk %}">Edit</a></button>
+            </div>
+        </div>
+    {% if not forloop.last %}
+    <hr>
+    {% endif %}
+
+    {% endfor %}
+
+ </div>
+{% endblock %}
